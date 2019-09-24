@@ -7,7 +7,7 @@ class App extends React.Component {
 
   state={resetCounter:false}
 
-  resetCounter= () => this.setState( {resetCounter: !this.state.resetCounter} );
+  resetCounter= () => this.setState( {resetCounter: true} );
 
   render() {
       return (
@@ -22,6 +22,12 @@ class App extends React.Component {
       </div>
     );
   }
+
+  componentDidUpdate () {
+    if (this.state.resetCounter!==false)
+      this.setState( {resetCounter: false} );
+  }
+
 }
 
 export default App;       

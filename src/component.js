@@ -9,13 +9,13 @@ class Display extends React.Component {
   } 
 
   // method to avoid code duplication in constructor and cWRP
-  resetState = () => ({resettableCounter: 0}); 
+  resetState = () => ({resettableCounter: 0,}); 
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.resetCounter!==this.props.resettableCounter) 
+    if (nextProps.resetCounter===true) 
       this.setState(this.resetState())
   }
-
+  
   render() {
     return (
         <>
