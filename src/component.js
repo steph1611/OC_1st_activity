@@ -4,15 +4,16 @@ class Display extends React.Component {
 
   constructor() {
     super();
-      this.state = {
-          generalCounter: 0,
-          resettableCounter: 0
-      };
+    this.state = this.resetState();
+    this.state.generalCounter=0;
   } 
+
+  // method to avoid code duplication in constructor and cWRP
+  resetState = () => ({resettableCounter: 0}); 
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.resetCounter!==this.props.resettableCounter) 
-      this.setState({resettableCounter: 0})
+      this.setState(this.resetState())
   }
 
   render() {
