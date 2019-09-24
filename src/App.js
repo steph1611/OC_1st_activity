@@ -1,43 +1,22 @@
 import React from 'react';
 import './App.css';
 
+import Display from './component.js'
+
 class App extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      general_counter: 0,
-      resettable_counter: 0
-    };
-  } 
+  state={resetCounter:false}
 
-  resetCounter= () => this.setState( {resettable_counter: 0} );
-
-  incCounters= () => this.setState(
-    {
-      resettable_counter: this.state.resettable_counter+1,
-      general_counter: this.state.general_counter+1 
-    }
-  );
-
-  decCounters= () => this.setState(
-    {
-      resettable_counter: this.state.resettable_counter-1,
-      general_counter: this.state.general_counter-1
-    }
-  );
+  resetCounter= () => this.setState( {resetCounter: !this.state.resetCounter} );
 
   render() {
-      console.log(this.state.resettable_counter);
       return (
       <div className="App">
         <header className="App-header">
-          <div>general counter : {this.state.general_counter}</div>
-          <div>resettable counter : {this.state.resettable_counter}</div>
+          <Display resetCounter={this.state.resetCounter}></Display>
           <div>
-            <button onClick={this.resetCounter}>Reset</button>
-            <button onClick={this.incCounters}>+</button>
-            <button onClick={this.decCounters}>-</button>
+           <p></p><p></p>
+           <button onClick={this.resetCounter}>Reset</button>
           </div>
         </header>
       </div>
@@ -45,4 +24,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default App;       
