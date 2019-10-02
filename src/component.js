@@ -4,12 +4,18 @@ class Display extends React.Component {
 
   constructor() {
     super();
-    this.state = this.resetState();
+    this.state = Display.resetState();
     this.state.generalCounter=0;
   } 
 
-  // method to avoid code duplication in constructor and cWRP
+  /* method to avoid code duplication in constructor and cWRP
+   could not be used with getDerivedStateFromProps
   resetState = () => ({resettableCounter: 0,}); 
+  */
+
+  static resetState () {
+    return ({resettableCounter: 0,}); 
+  }
 
   /*
   componentWillReceiveProps(nextProps) {
@@ -20,7 +26,8 @@ class Display extends React.Component {
   
   static getDerivedStateFromProps(nextProps) {
     if (nextProps.resetCounter === true) {
-      return {resettableCounter: 0,};
+  //    return {resettableCounter: 0,};
+      return Display.resetState();
     } else {
       return null;
     }
